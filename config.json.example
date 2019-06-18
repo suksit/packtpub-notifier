@@ -1,0 +1,8 @@
+{
+  "tokens": [
+    {
+      "name": "recipient-name",
+      "value": "line-notify-access-token"
+    }
+  ]
+}
