@@ -26,12 +26,22 @@ const IMAGE_NAME = 'cover.jpg'
       waitUntil: 'networkidle0'
     })
 
-    const body = await page.evaluate(() => document.body.innerHTML)
-    const $ = cheerio.load(body)
+    let body = await page.evaluate(() => document.body.innerHTML)
+    let $ = cheerio.load(body)
 
     const title = $('h2.product__title').text().trim()
     const published = $('p.product__publication-date').first().text().trim()
-    const imageURL = $('img.product__img').attr('src')
+
+    const bookURL = BASE_URL + $('a.product__img-wrapper').attr('href')
+
+    await page.goto(bookURL, {
+      waitUntil: 'networkidle0'
+    })
+
+    body = await page.evaluate(() => document.body.innerHTML)
+    $ = cheerio.load(body)
+
+    const imageURL = $('img.fotorama__img').attr('src')
 
     const image = await page.goto(imageURL)
     fs.writeFileSync(`./${IMAGE_NAME}`, await image.buffer())
