@@ -29,7 +29,7 @@ const IMAGE_NAME = 'cover.jpg'
     let body = await page.evaluate(() => document.body.innerHTML)
     let $ = cheerio.load(body)
 
-    const title = $('h2.product__title').text().trim()
+    const title = $('h1.product__title').text().trim()
     const published = $('p.product__publication-date').first().text().trim()
 
     const bookURL = BASE_URL + $('a.product__img-wrapper').attr('href')
