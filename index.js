@@ -12,9 +12,10 @@ const IMAGE_NAME = 'cover.jpg'
 
 ;(async () => {
   try {
-    const browser = await puppeteer.connect({
-      browserWSEndpoint: 'ws://chrome:3000'
-    })
+    const browser = await puppeteer.launch({
+      executablePath: '/usr/bin/chromium-browser',
+      args: ['--disable-dev-shm-usage', '--no-sandbox']
+    });
 
     const page = await browser.newPage()
 
