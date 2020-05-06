@@ -16,4 +16,4 @@ RUN yarn --prod
 
 COPY index.js config.json ./
 
-CMD ["/usr/sbin/crond", "-f", "-d", "0"]
+CMD ["/usr/sbin/crond", "-f", "-l", "8"]
