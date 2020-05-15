@@ -5,7 +5,7 @@ WORKDIR /app
 RUN apk add --no-cache chromium ttf-freefont tzdata \
     && cp /usr/share/zoneinfo/Asia/Bangkok /etc/localtime \
     && echo "Asia/Bangkok" > /etc/timezone \
-    && echo '30 10 * * * cd /app; node index.js' > crontab.tmp \
+    && echo '00 11 * * * cd /app; node index.js' > crontab.tmp \
     && crontab crontab.tmp \
     && rm -f crontab.tmp
 
