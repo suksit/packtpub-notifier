@@ -70,9 +70,9 @@ const IMAGE_NAME = 'cover.jpg'
         console.log(res.body)
       })
     })
-
-    await browser.close()
   } catch (err) {
     console.error(err)
+  } finally {
+    await browser.close()
   }
 })()
